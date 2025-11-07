@@ -1,0 +1,95 @@
+.row.formRow {
+    background-color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.row.transaction-section {
+    margin-top: 8%;
+    margin-left: auto;
+    margin-right: auto;
+    /* padding: 0px; */
+}
+
+.btn.btn-secondary.transaction {
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 100%;
+    border-radius: 10px;
+    border: none;
+    color: grey;
+    background-color: transparent;
+
+}
+
+.btn.btn-primary.transaction {
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 100%;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    background: #007AFF;
+
+}
+
+button.primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 122, 255, 0.4);
+}
+
+.row.transaction-btn-row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.col.transaction {
+    padding: 0px;
+    /* padding-left: 1%;
+    padding-right: 1%; */
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.btn.btn-primary.submit-btn {
+    margin-top: 2%;
+    width: 98%;
+    border-radius: 9999px;
+    background: #007AFF;
+    color: white;
+    border: none;
+    /* margin-left: 75%; */
+}
+
+.btn.btn-primary.submit-btn:hover {
+    /* transform: scale(1.05); */
+    box-shadow: 0 0 15px rgba(0, 122, 255, 0.4);
+}
+
+.forms {
+    margin-top: 2%;
+}
+
+@media (max-width: 600px) {
+
+    .btn.btn-primary.submit-btn {
+        margin-top: 5%;
+        width: 98%;
+        /* margin-left: 55%; */
+    }
+
+    .row.formRow {
+        background-color: white;
+        margin-top: 4%;
+        margin-bottom: 4%;
+        padding-top: 4%;
+        padding-bottom: 4%;
+    }
+}

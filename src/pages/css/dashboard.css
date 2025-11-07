@@ -1,0 +1,52 @@
+.container.nomarg-leftright {
+    /* margin-top: 2%;
+    margin-bottom: 2%; */
+    /* background: #F5F5F7; */
+    /* background: rgba(242, 245, 245, 0.7); */
+    backdrop-filter: blur(20px);
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0F0F5 100%);
+
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+.card.cards {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+.card-title {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1C1C1E;
+  margin-bottom: 10px;
+}
+
+.card-amount {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.card.cards:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 600px) {
+    .card.cards {
+        padding: 5px;
+        min-width: 121px;
+    }
+
+    .card-amount {
+        color: #00000099;
+    }
+}
