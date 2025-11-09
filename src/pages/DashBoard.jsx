@@ -5,25 +5,57 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import Statements from "../component/Statements";
 import Transactions from "../component/Transactions";
 import './css/dashboard.css'
+import { useEffect, useState } from "react";
 
 const DashBoard = () => {
+
+    const data = {
+        "Today": [
+            { amount: 20, symbol: "-", note: "Snacks", category: "Food" },
+            { amount: 10, symbol: "-", note: "Water", category: "Food" },
+            { amount: 200, symbol: "+", note: "Allowance", category: "Salary" }
+        ],
+        "04 Tue 11 2025": [
+            { amount: 5, symbol: "-", note: "Chips", category: "Food" },
+            { amount: 18, symbol: "-", note: "Momos", category: "Food" }
+        ]
+    }
+
+    const [totalIncomes, setTotalIncomes] = useState(0);
+    const [totalExpenses, setTotalExpenses] = useState(0);
+    
+    useEffect(() => {
+        let income = 0;
+        let expense = 0;
+
+        Object.entries(data).forEach(([key, value]) => {
+            value.forEach(s => {
+                if (s.symbol === "+") income += s.amount;
+                else if (s.symbol === "-") expense += s.amount;
+            })
+        })
+    
+        setTotalIncomes(income);
+        setTotalExpenses(expense);
+    }, []);
+
 
     const dict = {
         income: {
             title: "Income",
-            amount: 5000,
+            amount: totalIncomes,
             mutedText: "This month Total Income",
             cardText: "Income are similar to last month"
         },
         expense: {
             title: "Expense",
-            amount: 500,
+            amount: totalExpenses,
             mutedText: "This month Total Expense",
             cardText: "Income are lesser to last month"
         },
         savings: {
             title: "Savings",
-            amount: 4500,
+            amount: totalIncomes - totalExpenses,
             mutedText: "This month Total Savings",
             cardText: "Savings are similar to last month"
         }
@@ -47,7 +79,7 @@ const DashBoard = () => {
                         <Transactions />
                     </div>
                     <div className="row">
-                        <Statements />
+                        <Statements data={data} />
                     </div>
                 </div>
                 <Notification />

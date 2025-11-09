@@ -8,14 +8,14 @@ const StatementDay = ({ date, statements }) => {
     const totalExpense = statements
         .filter(item => item.symbol === "-")
         .reduce((sum, item) => sum + item.amount, 0);
-        
+
     return (
         <div className='row statementDay'>
             <div className="row">
                 <nav className="col-12 navbar">
                     <div className="container-fluid">
                         <span className="navbar-brand mb-0 h5">{date}</span>
-                        <span class="navbar-text">
+                        <span className="navbar-text">
                             <span className="primary-text">{totalIncome}$</span>
                             <span className="danger-text">{totalExpense}$</span>
                         </span>
