@@ -9,21 +9,23 @@ import { useEffect, useState } from "react";
 
 const DashBoard = () => {
 
-    const data = {
-        "Today": [
-            { amount: 20, symbol: "-", note: "Snacks", category: "Food" },
-            { amount: 10, symbol: "-", note: "Water", category: "Food" },
-            { amount: 200, symbol: "+", note: "Allowance", category: "Salary" }
-        ],
-        "04 Tue 11 2025": [
-            { amount: 5, symbol: "-", note: "Chips", category: "Food" },
-            { amount: 18, symbol: "-", note: "Momos", category: "Food" }
-        ]
-    }
+    const [data, setData] = useState(
+        {
+            "Today": [
+                { amount: 20, symbol: "-", note: "Snacks", category: "Food", account: "Cash" },
+                { amount: 10, symbol: "-", note: "Water", category: "Food", account: "Cash"  },
+                { amount: 200, symbol: "+", note: "Allowance", category: "Salary", account: "Cash"  }
+            ],
+            "04 Tue 11 2025": [
+                { amount: 5, symbol: "-", note: "Chips", category: "Food" },
+                { amount: 18, symbol: "-", note: "Momos", category: "Food" }
+            ]
+        }
+    );
 
     const [totalIncomes, setTotalIncomes] = useState(0);
     const [totalExpenses, setTotalExpenses] = useState(0);
-    
+
     useEffect(() => {
         let income = 0;
         let expense = 0;
@@ -34,10 +36,10 @@ const DashBoard = () => {
                 else if (s.symbol === "-") expense += s.amount;
             })
         })
-    
+
         setTotalIncomes(income);
         setTotalExpenses(expense);
-    }, []);
+    }, [data]);
 
 
     const dict = {
@@ -76,7 +78,7 @@ const DashBoard = () => {
                         <div className="col cardCol"><Card title={dict.savings.title} amount={dict.savings.amount} mutedText={dict.savings.mutedText} cardText={dict.savings.cardText} /></div>
                     </div>
                     <div className="row">
-                        <Transactions />
+                        <Transactions setData={setData} />
                     </div>
                     <div className="row">
                         <Statements data={data} />
