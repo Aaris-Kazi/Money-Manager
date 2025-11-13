@@ -100,7 +100,7 @@ const Transactions = ({setData}) => {
 
         document.getElementById("category").value = "Select Category";
         document.getElementById("account").value = "Select Category";
-        document.getElementById("amount").value = 0;
+        document.getElementById("amount").value = null;
         document.getElementById("note").value = null;
     }
 
