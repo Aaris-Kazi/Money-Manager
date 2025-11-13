@@ -3,8 +3,8 @@ const Statement = ({ amount, symbol, note, category }) => {
     // const bg = symbol === "+" ? "bg-greenfade" : "bg-redfade";
     const textColor = symbol === "+" ? "primary" : "danger";
     let meginLeft = 0;
-    if (category.length < 5) {
-        meginLeft = 20 + category.length;
+    if (category.length <=6) {
+        meginLeft = 22 + category.length;
     } else {
         meginLeft = 32 + category.length + note.length;
     }

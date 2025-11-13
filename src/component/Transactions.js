@@ -20,10 +20,7 @@ const Transactions = ({setData}) => {
 
 
     async function setter(symbol) {
-        const now = new Date();
-
-        const dateTime = now.toLocaleString();
-        console.log(dateTime);
+        
 
 
 
@@ -34,33 +31,23 @@ const Transactions = ({setData}) => {
         setFormData((prev) => ({ ...prev, "symbol": symbol }));
 
 
-        const formatted = now.toISOString();
-        const date = new Date(formatted);
-
-        const day = String(date.getUTCDate()).padStart(2, '0');
-        const weekday = date.toLocaleString('en-US', { weekday: 'short', timeZone: 'UTC' });
-        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-        const year = date.getUTCFullYear();
-
-        const keyDate = `${day} ${weekday} ${month} ${year}`
-
-        // console.log(`${day} ${weekday} ${month} ${year}`);
-
-
-        setData((prevData) => ({...prevData, 
-            [keyDate] : [...(prevData[keyDate] || []), formData]
-        }))
     }
 
     const incomeState = () => {
         setTransactionState(true);
         document.getElementById("category").value = "Select Category";
+        document.getElementById("account").value = "Select Category";
+        document.getElementById("amount").value = null;
+        document.getElementById("note").value = null;
         setter("+");
     };
 
     const expenseState = () => {
         setTransactionState(false);
         document.getElementById("category").value = "Select Category";
+        document.getElementById("account").value = "Select Category";
+        document.getElementById("amount").value = null;
+        document.getElementById("note").value = null;
         setter("-");
     };
 
@@ -87,6 +74,34 @@ const Transactions = ({setData}) => {
     const handleAddTransaction = async () => {
         const symbol = transactionState ? "+" : "-";
         setter(symbol);
+
+        const now = new Date();
+
+        const dateTime = now.toLocaleString();
+        console.log(dateTime);
+
+        
+        const formatted = now.toISOString();
+        const date = new Date(formatted);
+
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const weekday = date.toLocaleString('en-US', { weekday: 'short', timeZone: 'UTC' });
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = date.getUTCFullYear();
+
+        const keyDate = `${day} ${weekday} ${month} ${year}`
+
+        // console.log(`${day} ${weekday} ${month} ${year}`);
+
+
+        setData((prevData) => ({...prevData, 
+            [keyDate] : [...(prevData[keyDate] || []), formData]
+        }))
+
+        document.getElementById("category").value = "Select Category";
+        document.getElementById("account").value = "Select Category";
+        document.getElementById("amount").value = 0;
+        document.getElementById("note").value = null;
     }
 
     return (
