@@ -18,7 +18,8 @@ const DashBoard = () => {
             ],
             "04 Tue 11 2025": [
                 { amount: 5, symbol: "-", note: "Chips", category: "Food" },
-                { amount: 18, symbol: "-", note: "Momos", category: "Food" }
+                { amount: 18, symbol: "-", note: "Momos", category: "Food" },
+                { amount: 50, symbol: "+", note: "Rent", category: "Allowance" }
             ]
         }
     );
