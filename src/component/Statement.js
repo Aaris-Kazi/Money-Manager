@@ -8,8 +8,6 @@ const Statement = ({ amount, symbol, note, category }) => {
     } else {
         meginLeft = 32 + category.length + note.length;
     }
-    console.log(note.length);
-    console.log(meginLeft);
     
     
     return (
