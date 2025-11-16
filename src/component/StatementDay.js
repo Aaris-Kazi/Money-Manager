@@ -1,5 +1,6 @@
 import Statement from "./Statement"
 const StatementDay = ({ dates, statements }) => {
+    const currentDate = new Date().toISOString().split("T")[0];
 
     const totalIncome = statements
         .filter(item => item.symbol === "+")
@@ -9,7 +10,7 @@ const StatementDay = ({ dates, statements }) => {
         .filter(item => item.symbol === "-")
         .reduce((sum, item) => sum + item.amount, 0);
 
-    // console.log(dates);
+    // console.log(currentDate);
     
 
     const date = new Date(dates);
@@ -19,7 +20,7 @@ const StatementDay = ({ dates, statements }) => {
     const month = String(date.getUTCMonth() + 1).padStart(2, '0');
     const year = date.getUTCFullYear();
 
-    const keyDate = `${day} ${weekday} ${month} ${year}`
+    const keyDate = currentDate === dates.split("T")[0] ? "Today" : `${day} ${weekday} ${month} ${year}`
 
     return (
         <div className='row statementDay'>
