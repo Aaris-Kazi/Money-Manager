@@ -10,7 +10,7 @@ const Statements = ({data}) => {
             <span className="h5">Statements</span>
             <div className="row">
                 {Object.entries(data).map(([date, statements], index) => (
-                    <StatementDay key={index} date={date} statements={statements} />
+                    <StatementDay key={index} dates={date} statements={statements} />
                 ))}
 
 

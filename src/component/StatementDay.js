@@ -1,5 +1,5 @@
 import Statement from "./Statement"
-const StatementDay = ({ date, statements }) => {
+const StatementDay = ({ dates, statements }) => {
 
     const totalIncome = statements
         .filter(item => item.symbol === "+")
@@ -9,12 +9,24 @@ const StatementDay = ({ date, statements }) => {
         .filter(item => item.symbol === "-")
         .reduce((sum, item) => sum + item.amount, 0);
 
+    // console.log(dates);
+    
+
+    const date = new Date(dates);
+
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const weekday = date.toLocaleString('en-US', { weekday: 'short', timeZone: 'UTC' });
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+
+    const keyDate = `${day} ${weekday} ${month} ${year}`
+
     return (
         <div className='row statementDay'>
             <div className="row">
                 <nav className="col-12 navbar">
                     <div className="container-fluid">
-                        <span className="navbar-brand mb-0 h5">{date}</span>
+                        <span className="navbar-brand mb-0 h5">{keyDate}</span>
                         <span className="navbar-text">
                             <span className="primary-text">{totalIncome}$</span>
                             <span className="danger-text">{totalExpense}$</span>

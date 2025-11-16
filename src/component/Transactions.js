@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./style/transaction.css"
+import CustomDates from "./CustomDates";
 
 const Transactions = ({setData}) => {
 
-    const [transactionState, setTransactionState] = useState([
-        true
-    ]);
+    const [transactionState, setTransactionState] = useState(true);
+
+    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+    const [isCustomDateEnable, setisCustomDateEnable] = useState(false);
     const incomeCategory = ["Passive Income", "Salary", "Bonus", "Transfer", "Freelance", "Other"];
     const expenseCategory = ["Food", "Transport", "Communication", "Bills", "Health", "Social Life", "Shopping", "Investment", "Transfer"];
 
@@ -20,10 +22,6 @@ const Transactions = ({setData}) => {
 
 
     async function setter(symbol) {
-        
-
-
-
         setFormData((prev) => ({ ...prev, "amount": Number(document.getElementById("amount").value) }));
         setFormData((prev) => ({ ...prev, "category": document.getElementById("category").value }));
         setFormData((prev) => ({ ...prev, "account": document.getElementById("account").value }));
@@ -63,11 +61,25 @@ const Transactions = ({setData}) => {
 
         if(id === "amount"){
             setFormData((prev) => ({ ...prev, [id]: Number(value) }));
-            
+        } else if(id === "date") {
+            console.log(value);
+            setDate(value);
         } else {
             setFormData((prev) => ({ ...prev, [id]: value }));
         }
 
+    }
+
+    const handleToggleSwitch = (e) => {
+        const isChecked = e.target.checked;    
+        setisCustomDateEnable(isChecked);
+        if (!isChecked) {
+            const now = new Date().toISOString().split("T")[0];
+            setDate(now);
+            console.log(now);
+            
+        }
+        
     }
 
 
@@ -75,27 +87,14 @@ const Transactions = ({setData}) => {
         const symbol = transactionState ? "+" : "-";
         setter(symbol);
 
-        const now = new Date();
+        const iso = new Date(date).toISOString();
 
-        const dateTime = now.toLocaleString();
-        console.log(dateTime);
-
+        // console.log(iso);
         
-        const formatted = now.toISOString();
-        const date = new Date(formatted);
-
-        const day = String(date.getUTCDate()).padStart(2, '0');
-        const weekday = date.toLocaleString('en-US', { weekday: 'short', timeZone: 'UTC' });
-        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-        const year = date.getUTCFullYear();
-
-        const keyDate = `${day} ${weekday} ${month} ${year}`
-
-        // console.log(`${day} ${weekday} ${month} ${year}`);
 
 
         setData((prevData) => ({...prevData, 
-            [keyDate] : [...(prevData[keyDate] || []), formData]
+            [iso] : [...(prevData[iso] || []), formData]
         }))
 
         document.getElementById("category").value = "Select Category";
@@ -124,6 +123,19 @@ const Transactions = ({setData}) => {
             </div>
             <div className="row formRow">
                 <form className="forms" method="post" action={""}>
+
+                    <div className="row">
+                        <div className="row button form-check form-switch">
+                            <div className="col-3">
+                                <label className="form-check-label position-absolute checkLabel" htmlFor="switchCheckChecked">Custom Date</label>
+                                <input className="form-check-input checkSwitch" type="checkbox" role="switch" id="switchCheckChecked" onChange={handleToggleSwitch} />
+                            </div>
+                            <CustomDates is_custom_date_enable={isCustomDateEnable} handleChange={handleChange} />
+                        </div>
+                        <div className="row input"></div>
+                    </div>
+
+                    
                     <label htmlFor="amount" className="form-label" >Amount</label>
                     <input id="amount" type="number" className="form-control" placeholder="Enter Amount"  onChange={handleChange} required />
                     <label htmlFor="category" className="form-label">Category</label>

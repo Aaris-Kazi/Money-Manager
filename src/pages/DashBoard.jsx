@@ -11,12 +11,17 @@ const DashBoard = () => {
 
     const [data, setData] = useState(
         {
-            "Today": [
-                { amount: 20, symbol: "-", note: "Snacks", category: "Food", account: "Cash" },
-                { amount: 10, symbol: "-", note: "Water", category: "Food", account: "Cash"  },
-                { amount: 200, symbol: "+", note: "Allowance", category: "Salary", account: "Cash"  }
+            "2025-11-04T00:00:00.000Z": [
+                { amount: 5, symbol: "-", note: "Chips", category: "Food" },
+                { amount: 18, symbol: "-", note: "Momos", category: "Food" },
+                { amount: 50, symbol: "+", note: "Rent", category: "Allowance" }
             ],
-            "04 Tue 11 2025": [
+            "2025-11-11T00:00:00.000Z": [
+                { amount: 5, symbol: "-", note: "Chips", category: "Food" },
+                { amount: 18, symbol: "-", note: "Momos", category: "Food" },
+                { amount: 50, symbol: "+", note: "Rent", category: "Allowance" }
+            ],
+            "2025-11-15T00:00:00.000Z": [
                 { amount: 5, symbol: "-", note: "Chips", category: "Food" },
                 { amount: 18, symbol: "-", note: "Momos", category: "Food" },
                 { amount: 50, symbol: "+", note: "Rent", category: "Allowance" }
