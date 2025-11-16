@@ -62,7 +62,7 @@ const Transactions = ({setData}) => {
         if(id === "amount"){
             setFormData((prev) => ({ ...prev, [id]: Number(value) }));
         } else if(id === "date") {
-            console.log(value);
+            // console.log(value);
             setDate(value);
         } else {
             setFormData((prev) => ({ ...prev, [id]: value }));
@@ -76,7 +76,7 @@ const Transactions = ({setData}) => {
         if (!isChecked) {
             const now = new Date().toISOString().split("T")[0];
             setDate(now);
-            console.log(now);
+            // console.log(now);
             
         }
         
@@ -88,11 +88,7 @@ const Transactions = ({setData}) => {
         setter(symbol);
 
         const iso = new Date(date).toISOString();
-
         // console.log(iso);
-        
-
-
         setData((prevData) => ({...prevData, 
             [iso] : [...(prevData[iso] || []), formData]
         }))
