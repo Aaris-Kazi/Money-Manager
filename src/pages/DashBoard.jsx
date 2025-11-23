@@ -6,8 +6,14 @@ import Statements from "../component/Statements";
 import Transactions from "../component/Transactions";
 import './css/dashboard.css'
 import { useEffect, useState } from "react";
+import PopupCard from "../component/PopupCard";
 
 const DashBoard = () => {
+    const [open, setOpen] = useState(false);
+    const [pointer, setPointer] = useState({
+        "date"  : "",
+        "index" : -1
+    });
 
     const [data, setData] = useState(
         {
@@ -84,10 +90,11 @@ const DashBoard = () => {
                         <div className="col cardCol"><Card title={dict.savings.title} amount={dict.savings.amount} mutedText={dict.savings.mutedText} cardText={dict.savings.cardText} /></div>
                     </div>
                     <div className="row">
+                        <PopupCard open={open} setOpen={setOpen} data={data} setData={setData} pointer={pointer} />
                         <Transactions setData={setData} />
                     </div>
                     <div className="row">
-                        <Statements data={data} />
+                        <Statements data={data} setOpen={setOpen} setPointer={setPointer} />
                     </div>
                 </div>
                 <Notification />

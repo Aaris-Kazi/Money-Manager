@@ -1,5 +1,5 @@
 import Statement from "./Statement"
-const StatementDay = ({ dates, statements }) => {
+const StatementDay = ({ dates, statements, setOpen, setPointer }) => {
     const currentDate = new Date().toISOString().split("T")[0];
 
     const totalIncome = statements
@@ -38,7 +38,7 @@ const StatementDay = ({ dates, statements }) => {
             <div className="row">
                 {statements.map((statements, index) => (
 
-                    <Statement key={index} amount={statements.amount} symbol={statements.symbol} note={statements.note} category={statements.category} />
+                    <Statement key={index} index={index} date={dates} amount={statements.amount} symbol={statements.symbol} note={statements.note} category={statements.category} setOpen={setOpen} setPointer={setPointer} />
                 ))}
             </div>
         </div>

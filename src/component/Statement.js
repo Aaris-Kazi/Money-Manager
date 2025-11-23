@@ -1,4 +1,12 @@
-const Statement = ({ amount, symbol, note, category }) => {
+const Statement = ({index, date, amount, symbol, note, category, setOpen, setPointer }) => {
+
+    function openPop(e) {
+        setOpen(true);
+        setPointer({
+            "date": date,
+            "index": index
+        });
+    }
 
     // const bg = symbol === "+" ? "bg-greenfade" : "bg-redfade";
     const textColor = symbol === "+" ? "primary" : "danger";
@@ -12,7 +20,7 @@ const Statement = ({ amount, symbol, note, category }) => {
     
     return (
         // <div className={"row statement-section " + bg}>
-        <div className={"row statement-section "}>
+        <div className={"row statement-section"} onClick={openPop}>
             <div className="col-10">
                 <div className="row">
                     <h6 className="pillmargin">{note}<span className="position-absolute translate-middle badge popup rounded-pill text-bg-secondary h7" style={{"marginLeft": meginLeft + "px"}}>{category}</span></h6>

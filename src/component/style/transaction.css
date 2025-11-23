@@ -14,7 +14,12 @@
     margin-top: 8%;
     margin-left: auto;
     margin-right: auto;
-    /* padding: 0px; */
+}
+
+.row.transaction-section.update {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn.btn-secondary.transaction {
@@ -68,6 +73,25 @@ button.primary:hover {
     /* margin-left: 75%; */
 }
 
+
+.btn.btn-primary.submit-btn.update {
+    margin-top: 2%;
+    width: 50%;
+    border-radius: 9999px;
+    background: #007AFF;
+    color: white;
+    border: none;
+}
+
+.btn.btn-danger.submit-btn.update {
+    margin-top: 2%;
+    margin-left: 20%;
+    width: 30%;
+    border-radius: 9999px;
+    color: white;
+    border: none;
+}
+
 .btn.btn-primary.submit-btn:hover {
     /* transform: scale(1.05); */
     box-shadow: 0 0 15px rgba(0, 122, 255, 0.4);
@@ -114,6 +138,16 @@ button.primary:hover {
         margin-top: 5%;
         width: 98%;
         /* margin-left: 55%; */
+    }
+
+    .btn.btn-primary.submit-btn.update {
+        margin-top: 5%;
+        width: 50%;
+    }
+
+    .btn.btn-danger.submit-btn.update {
+        margin-top: 5%;
+        width: 30%;
     }
 
     .row.formRow {
