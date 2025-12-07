@@ -9,10 +9,14 @@ import { useEffect, useState } from "react";
 import PopupCard from "../component/PopupCard";
 
 const DashBoard = () => {
+    const now = new Date();
+    const month = now.toLocaleString("en-US", { month: "short" }).toUpperCase();
+    const year = now.getFullYear();
+
     const [open, setOpen] = useState(false);
     const [pointer, setPointer] = useState({
-        "date"  : "",
-        "index" : -1
+        "date": "",
+        "index": -1
     });
 
     const [data, setData] = useState(
@@ -82,7 +86,7 @@ const DashBoard = () => {
                         <span className="h4">Dashboard</span>
                     </div>
                     <div className="row month-yeard">
-                        <span className="h6"><FaChevronLeft className="text-muted" /> Nov 2025 <FaChevronRight /></span>
+                        <span className="h6"><FaChevronLeft className="text-muted" /> {month} {year} <FaChevronRight /></span>
                     </div>
                     <div className="row">
                         <div className="col cardCol"><Card title={dict.income.title} amount={dict.income.amount} mutedText={dict.income.mutedText} cardText={dict.income.cardText} /></div>
